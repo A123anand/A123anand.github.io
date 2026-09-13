@@ -6,7 +6,7 @@ body {
 
 html {
   font-size: 10px;
-  background-color: rgb(104, 216, 104);
+  background-color: darkgrey;
 }
 
 body {
@@ -50,6 +50,7 @@ li {
 
 header {
   margin-bottom: 10px;
+  
 }
 
 main,
@@ -107,6 +108,7 @@ main {
 
 article {
   flex: 4;
+  
 }
 
 aside {
