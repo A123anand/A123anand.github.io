@@ -1,0 +1,11 @@
+Flex:
+mdn link: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Test_your_skills/Flexbox
+Assignment: https://a123anand.github.io/ica/ICA8/flexbox/flex.html
+
+Grids:
+mdn link: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Test_your_skills/Grid
+Assignment: https://a123anand.github.io/ica/ICA8/grids/grids.html
+
+Media:
+mdn link: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Test_your_skills/Responsive_design
+Assignment: https://a123anand.github.io/ica/ICA8/media/media.html
