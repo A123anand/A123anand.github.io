@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="script.js" defer></script> -->
+</head>
+<body>
+
+    <!-- grid container for phone number values clicked -->
+     <!-- gris will be 1/6 of screen length at the top for instructions on how to enter the phone number -->
+    <!-- next 2/6 of screen length for the phone number values and box for user to input country code - there will also be a submit button and a delete button -->
+     <!-- the delete button will remove the last entered number -->
+    <!-- rest of screen will be used for bouncing balls with numbers in them for the user to click on to enter their number -->
+<!-- <button type="button" id="delete-btn" class="button button--secondary">Delete</button>
+<button type="submit" id="submit-btn" class="button">Submit</button> -->
+<div class="actions">
+  <button type="button" id="delete-btn" class="button button--secondary">Delete</button>
+  <button type="submit" id="submit-btn" class="button">Submit</button>
+</div>
+
+
+  <!-- Zone 1: 1/6 of screen, instructions -->
+  <header class="instructions">
+    <h1>Hello!</h1>
+    <p id="instructions-text">
+      Please enter your phone number by clicking the bouncing balls.
+    </p>
+  </header>
+
+  <!-- Zone 2: 2/6 of screen, number display + controls -->
+  <main class="entry">
+    <form id="phone-form" aria-labelledby="instructions-text">
+      <div class="field">
+        <label for="country-code">Country code</label>
+        <input
+          type="text"
+          id="country-code"
+          name="country-code"
+          inputmode="tel"
+          placeholder="+1"
+          maxlength="5"
+          pattern="\+?[0-9]{1,4}"
+          autocomplete="tel-country-code"
+          required>
+      </div>
+
+      <div class="field">
+        <span id="phone-label">Phone number</span>
+        <!-- JS writes the clicked digits in here -->
+        <output
+          id="phone-display"
+          name="phone-display"
+          aria-labelledby="phone-label"
+          aria-live="polite"></output>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="delete-btn">Delete</button>
+        <button type="submit" id="submit-btn">Submit</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Zone 3: remaining 3/6, bouncing balls -->
+  <section class="playground" aria-label="Click the balls to enter digits">
+    <canvas id="ball-canvas"></canvas>
+  </section>
+</body>
+</html>

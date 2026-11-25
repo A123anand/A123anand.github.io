@@ -1,13 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+
+  <!-- Zone 1: 2/8, instructions -->
+  <header class="instructions">
+
+    <h1>Hello!</h1>
+    <h2>Instructions</h2>
+    <p id="instructions-text">
+      Please enter your phone number by clicking the bouncing balls.<br>
+      The delete button removes the last digit.
+      The submit button submits the entered phone number.<br>
+      The country code field allows you to enter the country code for your phone number.<br>
+      The phone number display shows the digits you have entered.<br>
+      The bouncing balls represent the digits you can enter by clicking on them.<br>
+      The canvas area is where the bouncing balls move and can be interacted with.<br>
+    </p>
+  </header>
+
+  <!-- Zone 2: 3/8, number display + controls -->
+  <main class="entry">
+    <form id="phone-form" aria-labelledby="instructions-text">
+      <div class="field">
+        <label for="country-code">Country code</label>
+        <input
+          type="text"
+          id="country-code"
+          name="country-code"
+          inputmode="tel"
+          placeholder="+1"
+          maxlength="5"
+          pattern="\+?[0-9]{1,4}"
+          autocomplete="tel-country-code"
+          required>
+      </div>
+
+      <div class="field">
+        <span id="phone-label">Phone number</span>
+        <output
+          id="phone-display"
+          name="phone-display"
+          aria-labelledby="phone-label"
+          aria-live="polite"></output>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="delete-btn" class="button button--secondary">Delete</button>
+        <button type="submit" id="submit-btn" class="button">Submit</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Zone 3: 3/8, bouncing balls -->
+  <section class="playground" aria-label="Click the balls to enter digits">
+    <canvas id="ball-canvas"></canvas>
+  </section>
+
 </body>
 </html>
