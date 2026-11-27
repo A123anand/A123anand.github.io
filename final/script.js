@@ -7,9 +7,31 @@ const ctx = canvas.getContext("2d");
 const speed = 0.1;
 const totalBalls = 20;
 const radiusInches = 3;
-const PX_PER_INCH = 96; // CSS standard
+const PX_PER_INCH = 96;
 const width = (canvas.width = window.innerWidth);
 const height = (canvas.height = window.innerHeight);
+const enteredDisplay = document.querySelector("#entered");
+const clearButton = document.querySelector("#clear");
+const entered = [];
+
+
+function updateDisplay() {
+  enteredDisplay.textContent = "Entered: " + entered.join("");
+}
+
+clearButton.addEventListener("click", () => {
+  entered.length = 0;
+  updateDisplay();
+});
+
+function updateDisplay() {
+  enteredDisplay.textContent = "Entered: " + entered.join("");
+}
+
+clearButton.addEventListener("click", () => {
+  entered.length = 0;
+  updateDisplay();
+});
 
 // 5 in * 96 px/in = 480 px, capped so a ball always fits in the window
 const ballRadius = Math.min(radiusInches * PX_PER_INCH, width / 2, height / 2);
@@ -39,7 +61,7 @@ class Ball {
     this.velY = velY;
     this.color = color;
     this.size = size;
-    this.digit = random(0, 9);     
+    this.digit = digit;     
   }
 
   draw() {
@@ -118,7 +140,30 @@ while (balls.length < totalBalls) {
 
   balls.push(ball);
 }
+canvas.addEventListener("click", (event) => {
+  // convert click position to canvas coordinates
+  const rect = canvas.getBoundingClientRect();
+  const clickX = (event.clientX - rect.left) * (canvas.width / rect.width);
+  const clickY = (event.clientY - rect.top) * (canvas.height / rect.height);
+//   const dx = clickX - ball.x;
+//   const dy = clickY - ball.y;
+//   if (Math.sqrt(dx * dx + dy * dy) <= ball.size) {
+//     console.log("Clicked digit:", ball.digit);
 
+
+//     entered.push(ball.digit);
+// updateDisplay();
+  for (let i = balls.length -1; i>=0; i--){
+    const ball = balls[i];
+    const dx = clickX - ball.x;
+    const dy = clickY - ball.y;
+    if (Math.sqrt(dx * dx + dy * dy) <= ball.size) {
+      entered.push(ball.digit);
+      updateDisplay();
+      break;
+    }
+}
+});
 function loop() {
   ctx.fillStyle = "rgb(0 0 0 / 25%)";
   ctx.fillRect(0, 0, width, height);
