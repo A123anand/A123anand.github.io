@@ -1,4 +1,3 @@
-// // js
 // js
 // setup canvas
 
@@ -12,6 +11,10 @@ const width = (canvas.width = window.innerWidth);
 const height = (canvas.height = window.innerHeight);
 const enteredDisplay = document.querySelector("#entered");
 const clearButton = document.querySelector("#clear");
+const phoneDisplay = document.querySelector("#phone-display");
+const countryCode = document.querySelector("#country-code");
+const deleteBtn = document.querySelector("#delete-btn");
+const form = document.querySelector("#phone-form");
 const entered = [];
 
 
@@ -19,10 +22,10 @@ function updateDisplay() {
   enteredDisplay.textContent = "Entered: " + entered.join("");
 }
 
-clearButton.addEventListener("click", () => {
-  entered.length = 0;
-  updateDisplay();
-});
+// clearButton.addEventListener("click", () => {
+//   entered.length = 0;
+//   updateDisplay();
+// });
 
 function updateDisplay() {
   enteredDisplay.textContent = "Entered: " + entered.join("");
@@ -32,7 +35,10 @@ clearButton.addEventListener("click", () => {
   entered.length = 0;
   updateDisplay();
 });
-
+function updatenumber(digits){
+  entered.push(digits);
+  updateDisplay();
+}
 // 5 in * 96 px/in = 480 px, capped so a ball always fits in the window
 const ballRadius = Math.min(radiusInches * PX_PER_INCH, width / 2, height / 2);
 
@@ -54,14 +60,14 @@ function randomRGB() {
 }
 
 class Ball {
-  constructor(x, y, velX, velY, color, size) {
+  constructor(x, y, velX, velY, color, size, digit) {
     this.x = x;
     this.y = y;
     this.velX = velX;
     this.velY = velY;
     this.color = color;
     this.size = size;
-    this.digit = digit;     
+    this.digit = digit;
   }
 
   draw() {
